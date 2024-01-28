@@ -15,7 +15,6 @@ app.use(express.json());
 const verifyToken=(req,res,next)=>{
   let token=req.headers['authentication'];
   if(token){
-    token=token.split(' ')[1];
     Jwt.verify(token,key,(err,valid)=>{
       if(err){
         res.send("Please add valid token");
