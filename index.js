@@ -57,7 +57,7 @@ app.post('/login',async (req, res) => {
   }
 })
 
-app.post('/add-product',verifyToken, async (req, res) => {
+app.post('/add-product', async (req, res) => {
 
   if (req.body.name != '' && req.body.name != null) {
     let productData = new productModel(req.body);
