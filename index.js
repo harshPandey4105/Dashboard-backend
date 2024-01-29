@@ -57,7 +57,7 @@ app.post('/login',async (req, res) => {
   }
 })
 
-app.post('/add-product', async (req, res) => {
+app.post('/add-product',verifyToken, async (req, res) => {
 
   if (req.body.name != '' && req.body.name != null) {
     let productData = new productModel(req.body);
@@ -69,7 +69,7 @@ app.post('/add-product', async (req, res) => {
   }
 })
 
-app.get('/products',verifyToken, async (req, res) => {
+app.get('/products', async (req, res) => {
   const products = await productModel.find();
   if (products.length < 1) {
     res.send({ result: 'No product is found' });
